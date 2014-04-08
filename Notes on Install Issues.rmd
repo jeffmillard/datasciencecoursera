@@ -8,13 +8,13 @@ All of this relates to Mac OSX 10.9.2.
 When I tried to PUSH data to GitHub from RStudio, i would get and error message:
 
 *error: unable to read askpass response from rpostback-askpass;  
-fatal: could not read Password for https://github.com/jeffmillard/datasciencecoursera: Device not configured*
+fatal: could not read Password for https://github.com/yourgithubusernamehere/datasciencecoursera: Device not configured*
 
 Workaround appears to be to switch from connecting over https to connecting over ssh (secure shell).  Somewhat easier than that probably makes it sound.
 
-I ended up having to do the follwoing steps:
+I ended up having to do the following steps:
 
-1. Remove connection to remote.  May not be necessary, may not be an accuracte description of what this command does.  But I did this first:  Go to the directory for the repository ("datasciencecoursera") on your comnputer and execute:
+1. Remove connection to remote repository.  May not be necessary, ad may not be an accuracte description of what this command does.  But I did this first:  Go to the directory for the repository ("datasciencecoursera") on your comnputer and execute:
 
 **git remote rm origin**
 
@@ -36,7 +36,7 @@ For the text box repository URL enter
 
 Hopefully, it is obviuos that you replace yourgithubusernamehere with you GitHub user name.  If you are doing this for a repository other than datasciencecoursera, substitute that as well.
 
-Note, thios used to be something like
+Note, this used to be something like
 
 https://github.com/yourgithubusernamehere/datasciencecoursera.git
 

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Notes on Problems Getting Tools Working</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Notes on Problems Getting Tools Working</h1>
+
+<p>All of this relates to Mac OSX 10.9.2. </p>
+
+<h3>Problem with getting RStudio (0.98.501) to conect with GitHub account/repositories.</h3>
+
+<p>When I tried to PUSH data to GitHub from RStudio, i would get and error message:</p>
+
+<p><em>error: unable to read askpass response from rpostback-askpass;<br/>
+fatal: could not read Password for <a href="https://github.com/jeffmillard/datasciencecoursera:">https://github.com/jeffmillard/datasciencecoursera:</a> Device not configured</em></p>
+
+<p>Workaround appears to be to switch from connecting over https to connecting over ssh (secure shell).  Somewhat easier than that probably makes it sound.</p>
+
+<p>I ended up having to do the follwoing steps:</p>
+
+<ol>
+<li>Remove connection to remote.  May not be necessary, may not be an accuracte description of what this command does.  But I did this first:  Go to the directory for the repository (&ldquo;datasciencecoursera&rdquo;) on your comnputer and execute:</li>
+</ol>
+
+<p><strong>git remote rm origin</strong></p>
+
+<ol>
+<li>Delete the local copy of the repository.  I did this in terminal with the following command. Removing .git removes the saved versions of your files.  Deleting the files themselves does not!</li>
+</ol>
+
+<p><strong>rm -rf .git</strong></p>
+
+<ol>
+<li><p>Deleted Rstudio project file (used finder, couldn&#39;t see a way in RStudio to delete a project), directory, etc.</p></li>
+<li><p>Using RStudio, </p></li>
+</ol>
+
+<p><strong>File &gt; New Project &gt; From Version Control &gt; Git</strong></p>
+
+<p>For the text box repository URL enter</p>
+
+<p><strong><a href="mailto:git@github.com">git@github.com</a>:yourgithubusernamehere/datasciencecoursera.git</strong></p>
+
+<p>Hopefully, it is obviuos that you replace yourgithubusernamehere with you GitHub user name.  If you are doing this for a repository other than datasciencecoursera, substitute that as well.</p>
+
+<p>Note, thios used to be something like</p>
+
+<p><a href="https://github.com/yourgithubusernamehere/datasciencecoursera.git">https://github.com/yourgithubusernamehere/datasciencecoursera.git</a></p>
+
+<p>Note, I had done this after generating a second SSH key.  That may be necessary to do first.</p>
+
+</body>
+
+</html>
+
